@@ -7,6 +7,16 @@ class count extends Component {
     variant: "warning",
   };
 
+  addCount = () => {
+    if (this.state.hitung <= 0) {
+      return null;
+    } else {
+      this.setState({
+        hitung: this.setState.hitung + 1,
+      });
+    }
+  };
+
   cekCount = () => {
     if (this.state.hitung === 0) {
       this.setState({
@@ -26,7 +36,7 @@ class count extends Component {
       <Container fluid>
         <Row xs={2} md={4} lg={6}>
           <Col>
-            <Button variant={this.state.variant}> {this.cekCount()}</Button>
+            <Button variant={this.state.variant}> {this.cekCount}</Button>
           </Col>
           <Col>
             <Button variant="primary"> + </Button>
