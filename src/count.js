@@ -4,63 +4,44 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 class count extends Component {
   state = {
     hitung: 0,
-    variant: "warning",
-    value: null,
+    isDisabled: true,
   };
 
   addCount = () => {
-    if (this.state.hitung < 0) {
-      this.cekCount();
-    } else if (this.state.hitung === 0) {
+    if (this.state.hitung === 0) {
       this.setState({
-        variant: "dark",
         hitung: this.state.hitung + 1,
-        value: "ZERO",
       });
     } else {
       this.setState({
-        variant: "dark",
         hitung: this.state.hitung + 1,
-        value: this.state.hitung,
       });
     }
   };
   minusCount = () => {
     if (this.state.hitung <= 0) {
-      this.cekCount();
+      this.setState({
+        isDisabled: true,
+      });
+      return null;
     } else {
       this.setState({
-        variant: "dark",
         hitung: this.state.hitung - 1,
-        value: this.state.hitung,
       });
     }
   };
 
-  cekCount = (value) => {
-    if (this.state.hitung !== 0) {
-      this.setState({
-        variant: "dark",
-        value: this.state.hitung,
-      });
-    } else {
-      this.setState({
-        variant: "warning",
-        value: "ZERO",
-      });
-    }
-  };
-
-  componentDidMount() {
-    this.cekCount();
-  }
+  componentDidMount() {}
 
   render() {
     return (
       <Container fluid>
         <Row xs={2} md={4} lg={6}>
           <Col>
-            <Button variant={this.state.variant}> {this.state.value} </Button>
+            <Button variant={this.state.hitung === 0 ? "warning" : "dark"}>
+              {" "}
+              {this.state.hitung === 0 ? "ZERO" : this.state.hitung}{" "}
+            </Button>
           </Col>
           <Col>
             <Button variant="primary" onClick={this.addCount}>

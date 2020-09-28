@@ -7,6 +7,10 @@ import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <React.StrictMode>
     <Count />
+    <br />
+    <Count />
+    <br />
+    <Count />
   </React.StrictMode>,
   document.getElementById("root")
 );
