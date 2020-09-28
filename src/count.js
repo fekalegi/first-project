@@ -10,28 +10,43 @@ class count extends Component {
 
   addCount = () => {
     if (this.state.hitung < 0) {
-      this.setState({
-        hitung: "ZERO",
-      });
-    } else {
+      this.cekCount();
+    } else if (this.state.hitung === 0) {
       this.setState({
         variant: "dark",
         hitung: this.state.hitung + 1,
-      });
-    }
-    this.cekCount();
-  };
-
-  cekCount = () => {
-    if (this.state.hitung === 0) {
-      this.setState({
-        variant: "warning",
         value: "ZERO",
       });
     } else {
       this.setState({
         variant: "dark",
-        value: this.state.hitung + 1,
+        hitung: this.state.hitung + 1,
+        value: this.state.hitung,
+      });
+    }
+  };
+  minusCount = () => {
+    if (this.state.hitung <= 0) {
+      this.cekCount();
+    } else {
+      this.setState({
+        variant: "dark",
+        hitung: this.state.hitung - 1,
+        value: this.state.hitung,
+      });
+    }
+  };
+
+  cekCount = (value) => {
+    if (this.state.hitung !== 0) {
+      this.setState({
+        variant: "dark",
+        value: this.state.hitung,
+      });
+    } else {
+      this.setState({
+        variant: "warning",
+        value: "ZERO",
       });
     }
   };
@@ -51,6 +66,10 @@ class count extends Component {
             <Button variant="primary" onClick={this.addCount}>
               {" "}
               +{" "}
+            </Button>{" "}
+            <Button variant="primary" onClick={this.minusCount}>
+              {" "}
+              -{" "}
             </Button>
           </Col>
         </Row>
