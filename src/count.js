@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Container, Grid, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 class count extends Component {
   state = {
     hitung: 0,
+    variant: "warning",
   };
 
   cekCount = () => {
@@ -13,10 +14,12 @@ class count extends Component {
 
   render() {
     return (
-      <Container>
-        <Grid>
-          <Row></Row>
-        </Grid>
+      <Container fluid>
+        <Row>
+          <Col>
+            <Button variant={this.state.variant}> ZERO </Button>
+          </Col>
+        </Row>
       </Container>
     );
   }
