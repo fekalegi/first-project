@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Container, Grid, Row, Col } from "react-bootstrap";
 
 class count extends Component {
   state = {
@@ -11,7 +12,13 @@ class count extends Component {
   };
 
   render() {
-    return this.state.hitung;
+    return (
+      <Container>
+        <Grid>
+          <Row></Row>
+        </Grid>
+      </Container>
+    );
   }
 }
 
